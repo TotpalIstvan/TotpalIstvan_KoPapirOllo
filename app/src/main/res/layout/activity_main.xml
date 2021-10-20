@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Döntetelenek száma:0"
+        android:id="@+id/dontetlen"
+        android:textSize="12pt"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/kep1"
+        android:src="@drawable/rock"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A te választásod"
+        android:id="@+id/emberValasztas"
+        android:textSize="12pt"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/kep2"
+        android:src="@drawable/rock"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="A gép választása"
+        android:id="@+id/gepValasztas"
+        android:textSize="12pt"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Eredmény: Ember: 0 Computer:0"
+        android:textSize="12pt"
+        android:id="@+id/eredmeny"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:background="@drawable/rock"
+            android:id="@+id/ko"
+            />
+        <Button
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:background="@drawable/paper"
+            android:id="@+id/papir"/>
+
+        <Button
+            android:id="@+id/ollo"
+            android:layout_width="200px"
+            android:layout_height="200px"
+           android:background="@drawable/scissors" />
+    </LinearLayout>
+</LinearLayout>
