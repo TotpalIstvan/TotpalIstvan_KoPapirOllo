@@ -1,12 +1,15 @@
 package com.example.kopapirollo;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -43,17 +46,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void beallitas(int vegsoValasztas, ImageView kep) {
+            switch (vegsoValasztas) {
+                case 1:
+                    kep.setImageResource(R.drawable.rock);
+                    break;
+                case 2:
+                    kep.setImageResource(R.drawable.paper);
+                    break;
+                case 3:
+                    kep.setImageResource(R.drawable.scissors);
+                    break;
+            }
+    }
+
+    private void win() {
+        Toast.makeText(this,"Győzelem", Toast.LENGTH_SHORT).show();
+        emberEredmeny++;
+       eredmeny.setText("Eredmeny: Ember" + emberEredmeny + "Computer: " + gepEredmeny);
+    }
+
+    private void lose() {
+        Toast.makeText(this,"Vereség", Toast.LENGTH_SHORT).show();
+        gepEredmeny++;
+        eredmeny.setText("Eredmeny: Ember: " + emberEredmeny + " Computer: " + gepEredmeny);
+    }
+
+    private void draw() {
+        Toast.makeText(this,"Döntetlen", Toast.LENGTH_SHORT).show();
+        dontetlenSzam++;
+        dontetlen.setText("Döntetlenek száma: " + dontetlenSzam);
+    }
+
 
     private void valaszt(int option) {
         beallitas(option, kep1);
         int gepValaszt = (int) (Math.random() * 3) + 1;
-        beallitas(option, kep2);
+        beallitas(gepValaszt, kep2);
 
         if (option == gepValaszt) {
             draw();
         }else if(option == 1) {
                 if (gepValaszt == 2) {
-                    loss();
+                    lose();
                 }else {
                     win();
                 }
@@ -62,12 +97,12 @@ public class MainActivity extends AppCompatActivity {
                 win();
             }
             else{
-                loss();
+                lose();
             }
         }
         else if (option == 3){
             if (gepValaszt == 1){
-               loss();
+               lose();
             }
             else{
                 win();
@@ -79,7 +114,39 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+private void vege() {
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    builder.setCancelable(false);
+    builder.setMessage("Szeretne új játékot játszani?");
+    if (gepEredmeny > emberEredmeny) {
+        builder.setTitle("Vereség");
+    } else {
+        builder.setTitle("Győzelem");
+    }
+    builder.setPositiveButton("Igen", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int melyik) {
+            newGame();
+        }
+    });
 
+    builder.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int melyik) {
+            finish();
+        }
+    });
+}
+
+private void newGame() {
+        beallitas(1, kep1);
+        beallitas(2, kep2);
+        emberEredmeny = 0;
+        gepEredmeny = 0;
+        dontetlenSzam = 0;
+        eredmeny.setText("Eredemény: Ember: 0 Computer:0");
+        dontetlen.setText("Döntetlenek száma: 0");
+}
 
     private void init() {
         kep1 = findViewById(R.id.kep1);

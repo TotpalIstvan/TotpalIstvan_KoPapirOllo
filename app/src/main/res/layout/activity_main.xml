@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Döntetelenek száma:0"
+        android:text="Döntetlenek száma:0"
         android:id="@+id/dontetlen"
         android:textSize="12pt"/>
 
