@@ -118,24 +118,28 @@ private void vege() {
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setCancelable(false);
     builder.setMessage("Szeretne új játékot játszani?");
-    if (gepEredmeny > emberEredmeny) {
-        builder.setTitle("Vereség");
-    } else {
+    if (emberEredmeny > gepEredmeny) {
         builder.setTitle("Győzelem");
+    } else {
+        builder.setTitle("Vereség");
     }
+
+    builder.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            finish();
+        }
+    });
+
     builder.setPositiveButton("Igen", new DialogInterface.OnClickListener() {
         @Override
-        public void onClick(DialogInterface dialogInterface, int i) {
+        public void onClick(DialogInterface dialog, int which) {
             newGame();
         }
     });
 
-    builder.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialogInterface, int i) {
-            finish();
-        }
-    });
+    builder.create().show();
+
 }
 
 private void newGame() {
