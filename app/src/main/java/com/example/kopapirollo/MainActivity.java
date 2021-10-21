@@ -13,9 +13,9 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView kep1, kep2;
+    private ImageView kep1, kep2, emberElet1, emberElet2, emberElet3, gepElet1, gepElet2, gepElet3;
     private TextView eredmeny,dontetlen;
-    private int emberEredmeny, gepEredmeny,dontetlenSzam, emberElet, gepElet;
+    private int emberEredmeny, gepEredmeny,dontetlenSzam;
     private Button ko,papir,ollo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +63,32 @@ public class MainActivity extends AppCompatActivity {
     private void win() {
         Toast.makeText(this,"Győzelem", Toast.LENGTH_SHORT).show();
         emberEredmeny++;
-       eredmeny.setText("Eredmeny: Ember: " + emberEredmeny + "Computer: " + gepEredmeny);
+        switch (emberEredmeny) {
+            case 1: emberElet3.setImageResource(R.drawable.heart1);
+            break;
+            case 2: emberElet2.setImageResource(R.drawable.heart1);
+                break;
+            case 3: emberElet1.setImageResource(R.drawable.heart1);
+                break;
+
+        }
+
+        //eredmeny.setText("Eredmeny: Ember: " + emberEredmeny + "Computer: " + gepEredmeny);
     }
 
     private void lose() {
         Toast.makeText(this,"Vereség", Toast.LENGTH_SHORT).show();
         gepEredmeny++;
-        eredmeny.setText("Eredmeny: Ember: " + emberEredmeny + " Computer: " + gepEredmeny);
+        switch (gepEredmeny) {
+            case 1: gepElet3.setImageResource(R.drawable.heart1);
+                break;
+            case 2: gepElet2.setImageResource(R.drawable.heart1);
+                break;
+            case 3: gepElet1.setImageResource(R.drawable.heart1);
+                break;
+
+        }
+        //eredmeny.setText("Eredmeny: Ember: " + emberEredmeny + " Computer: " + gepEredmeny);
     }
 
     private void draw() {
@@ -148,17 +167,32 @@ private void newGame() {
         emberEredmeny = 0;
         gepEredmeny = 0;
         dontetlenSzam = 0;
-        eredmeny.setText("Eredemény: Ember: 0 Computer:0");
+        //eredmeny.setText("Eredemény: Ember: 0 Computer:0");
         dontetlen.setText("Döntetlenek száma: 0");
+        emberElet1.setImageResource(R.drawable.heart2);
+        emberElet2.setImageResource(R.drawable.heart2);
+        emberElet3.setImageResource(R.drawable.heart2);
+        gepElet1.setImageResource(R.drawable.heart2);
+        gepElet2.setImageResource(R.drawable.heart2);
+        gepElet3.setImageResource(R.drawable.heart2);
 }
 
     private void init() {
         kep1 = findViewById(R.id.kep1);
         kep2 = findViewById(R.id.kep2);
-        eredmeny = findViewById(R.id.eredmeny);
+        //eredmeny = findViewById(R.id.eredmeny);
         dontetlen = findViewById(R.id.dontetlen);
         ko = findViewById(R.id.ko);
         papir = findViewById(R.id.papir);
         ollo = findViewById(R.id.ollo);
+        emberEredmeny = 0;
+        gepEredmeny = 0;
+        dontetlenSzam = 0;
+        emberElet1 = findViewById(R.id.emberEgyElet);
+        emberElet2 = findViewById(R.id.emberKetElet);
+        emberElet3 = findViewById(R.id.emberHaromElet);
+        gepElet1 = findViewById(R.id.gepEgyElet);
+        gepElet2 = findViewById(R.id.gepKetElet);
+        gepElet3 = findViewById(R.id.gepHaromElet);
     }
 }
