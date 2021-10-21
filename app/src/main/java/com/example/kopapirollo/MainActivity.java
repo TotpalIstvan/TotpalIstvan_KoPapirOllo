@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private void win() {
         Toast.makeText(this,"Győzelem", Toast.LENGTH_SHORT).show();
         emberEredmeny++;
-       eredmeny.setText("Eredmeny: Ember" + emberEredmeny + "Computer: " + gepEredmeny);
+       eredmeny.setText("Eredmeny: Ember: " + emberEredmeny + "Computer: " + gepEredmeny);
     }
 
     private void lose() {
@@ -125,14 +125,14 @@ private void vege() {
     }
     builder.setPositiveButton("Igen", new DialogInterface.OnClickListener() {
         @Override
-        public void onClick(DialogInterface dialog, int melyik) {
+        public void onClick(DialogInterface dialogInterface, int i) {
             newGame();
         }
     });
 
     builder.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
         @Override
-        public void onClick(DialogInterface dialog, int melyik) {
+        public void onClick(DialogInterface dialogInterface, int i) {
             finish();
         }
     });
